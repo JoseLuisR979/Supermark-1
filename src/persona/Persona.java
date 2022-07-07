@@ -20,7 +20,7 @@ public class Persona {
 	private String Categoria;
 	private String Pass;
 	
-	//Constructores
+	/////Constructores
 	
 	public Persona() {}
 	
@@ -40,7 +40,7 @@ public class Persona {
 	}
 
 	
-	//Getters & Setters
+	/////Getters & Setters
 	
 	public String getIdPersona() {
 		return idPersona;
@@ -114,8 +114,10 @@ public class Persona {
 		Pass = pass;
 	}
 	
-	//CRUDD
+	//METODOS----------------------------------------------
 	
+	
+	//---------CREAR PERSONA -----------------------------------
 	public void crearPersona (Connection conexion)
 	{
 			Scanner sc = new Scanner(System.in);
@@ -183,6 +185,8 @@ public class Persona {
 		        	}
 	
 }
+	
+	//---------MODIFICAR PERSONA -------------------------------
 	
 	public void modificarPersona(Connection conexion) 
 	{
@@ -287,7 +291,8 @@ public class Persona {
 
 }
 
-
+	//-----------MODIFICAR PASSWORD----------------------------
+	
 	public void modificarPass(Connection conexion) 
 	{
 		
@@ -389,7 +394,89 @@ public class Persona {
 			
 	}
 
+	
+	//------------ELIMINAR PERSONA -----------------------------
+	
+	public void eliminarPersona(Connection conexion)
+	{
+		Scanner sc = new Scanner(System.in);
+		
+		Statement statement = null;
+		String sql;
+		ResultSet rs;
+		PreparedStatement stmt;
+		
+		try {
+			statement = conexion.createStatement();
+			
+			sql = "SELECT idPersona, Nombre, Apellido, Documento FROM persona order by idPersona ;";
+			
+			rs = statement.executeQuery(sql);
+			
+			System.out.println("Seleccione Cliente");
+			
+			while(rs.next()) 
+				{
+				
+				int idPersona = rs.getInt("idPersona");
+				String apellido = rs.getString("Apellido");
+				String nombre = rs.getString("Nombre");
+				String documento = rs.getString("Documento");
+				
+				System.out.println(idPersona + " - " + apellido + " " + nombre + " " + documento );
+				}
+			System.out.println("Cancelar seleccione presione 0");
+			int cliente  = sc.nextInt();
+			sc.nextLine();
+			
+			if(cliente!=0) {
+				
+				statement = conexion.createStatement();
+				sql = "SELECT idPersona FROM Persona WHERE idPersona = "+cliente+";";
+				rs = statement.executeQuery(sql);
+				int idpersona = 0;
+				while(rs.next())  
+				{
+					idpersona = rs.getInt("idPersona");
+				}	
+				
+				System.out.println("Datos ingresados, modificando...");
+				
+				stmt = conexion.prepareStatement("DELETE FROM persona WHERE idPersona = "+cliente+";");
+	        	
+	        	
+	        	
+	        	int response = stmt.executeUpdate();
+	        	if(response>0) 
+	        	{
+	        		System.out.println("Se elimino el registro correctamente");
+	        		sc.close();
+	        	}	
+			}
+		
+		
+		
+	}catch (SQLException sqle){
+        System.out.println("SQLState: "+ sqle.getSQLState());
+        System.out.println("SQLErrorCode: " + sqle.getErrorCode());
+        sqle.printStackTrace();
+    }catch (Exception e){
+        e.printStackTrace();
+    }
+
+
+
+
+
+
 }
+
+		
+		
+		
+		
+}
+
 
 
 
