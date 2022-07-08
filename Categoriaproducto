@@ -120,9 +120,9 @@ System.out.println("###############################");
 			System.out.println("Nombre de Categoria :");
 			String categoria = sc.nextLine(); 
 			System.out.println("Descripcion :");
-			String descripcion = sc.nextLine();
+			String Descripcion = sc.nextLine();
 			try {
-				PreparedStatement statement = connection.prepareStatement("UPDATE categoria SET Nombre=?,Descripcion=? WHERE idcategoria=?");
+				Declaracion preparada statement = connection.Declaracion preparada ("UPDATE categoria SET Nombre=?,Descripcion=? WHERE idcategoria=?");
 				statement.setString(1,categoria);
 				statement.setString(2,descripcion);
 				statement.setInt(3,idcategoria);
@@ -167,14 +167,14 @@ System.out.println("###############################");
 			e.printStackTrace();
 		}
 		System.out.println("##################################");
-		int idcategoria = sc.nextInt();
+		int idCategoria = sc.nextInt();
 		sc.nextLine();
 
-		if(idcategoria != 0) 
+		if(idCategoria != 0) 
 		{
 			try {
-				PreparedStatement statement = connection.prepareStatement("DELETE FROM categoria WHERE idcategoria=?");
-				statement.setInt(1,idcategoria);
+				Declaracion preparada statement = connection.Declaracion preparada ("DELETE FROM categoria WHERE idcategoria=?");
+				statement.setInt(1,idCategoria);
 	        	int response = statement.executeUpdate();
 	        	if (response > 0)
 	                System.out.println("Categoria Eliminado correctamente");
