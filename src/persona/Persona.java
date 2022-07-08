@@ -269,7 +269,7 @@ public class Persona {
 	        	int response = stmt.executeUpdate();
 	        	if(response>0) 
 	        	{
-	        		System.out.println("se actualizo persona correctamente");
+	        		System.out.println("se actualizo persona " + idpersona + " correctamente");
 	        		sc.close();
 	        	}	
 			}
@@ -449,7 +449,7 @@ public class Persona {
 	        	int response = stmt.executeUpdate();
 	        	if(response>0) 
 	        	{
-	        		System.out.println("Se elimino el registro correctamente");
+	        		System.out.println("Se elimino el registro " + idpersona+ " correctamente");
 	        		sc.close();
 	        	}	
 			}

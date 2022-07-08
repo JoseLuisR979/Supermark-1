@@ -16,7 +16,7 @@ public class Productos {
 	
 	//Atributos
 	
-	//private int idProducto;
+	
 	private String Nombre; 
 	private String Descripcion;
 	private int Cantidad;
@@ -30,10 +30,9 @@ public class Productos {
 	public Productos() { }
 
 
-	public Productos(int idProducto, String nombre, String descripcion, int cantidad, double precioUnitario,
+	public Productos(String nombre, String descripcion, int cantidad, double precioUnitario,
 			int idCategoria, int idVentas, int idDetalleVentas) {
 		super();
-		//this.idProducto = idProducto;
 		Nombre = nombre;
 		Descripcion = descripcion;
 		Cantidad = cantidad;
@@ -49,14 +48,7 @@ public class Productos {
 	
 	//--------------------Getter & Setters--------------------------
 	
-	//public int getIdProducto() {
-	//	return idProducto;
-	//}
-
-
-	//public void setIdProducto(int idProducto) {
-	//	this.idProducto = idProducto;
-	//}
+	
 
 
 	public String getNombre() {
@@ -244,10 +236,10 @@ public class Productos {
 			sql = "SELECT idproductos FROM productos WHERE idproductos = "+producto+";";
 			rs = statement.executeQuery(sql);
 			
-			int idproductos = 0;
+			int idproductos1 = 0;
 			while(rs.next())  
 			{
-				idproductos = rs.getInt("idproductos");
+				idproductos1 = rs.getInt("idproductos");
 			}	
 			
 			System.out.println("Datos ingresados, modificando...");
@@ -258,7 +250,7 @@ public class Productos {
         	
         	if(response>0) 
         	{
-        		System.out.println("Se elimino producto correctamente");
+        		System.out.println("Se elimino producto " + idproductos1 + " correctamente");
         		sc.close();
         	}	
 		}
@@ -370,34 +362,29 @@ try {
 				Double preciounitario1 = sc.nextDouble();
 								
 				statement = conexion.createStatement();
-				sql = "SELECT idproductos FROM productos WHERE idproductos = "+prod+";";
+				sql = "SELECT idProductos FROM productos WHERE idProductos = "+prod+";";
 				rs = statement.executeQuery(sql);
 				int idproducto1 = 0;
 				while(rs.next())  
 				{
-					idproducto1 = rs.getInt("idproductos");
+					idproducto1 = rs.getInt("idProductos");
 				}	
 				
 				System.out.println("Datos ingresados, modificando...");
 				
-				stmt = conexion.prepareStatement("UPDATE productos SET descripcion="+descripcion1+" WHERE idProductos = "+prod+"; ");
-						//+ " Nombre = ?,"
-						//+ " Descripcion = ?,"
-						//+ " Cantidad = ?,"
-						//+ " PrecioUnitario = ?,"
-					//	+ " detalleventas_idDetalleVentas = ?,"
-					//	+ " detalleventas_ventas_idventas = ?,"
-					//	+ " categoriaproductos_idCategoria = ?,"
-					//	+ " WHERE idProductos = ?; " );
-	        //	stmt.setString(1,nombre1);
-	        //	stmt.setString(2,descripcion1);
-	        	//stmt.setString(3,cantidad1);
-	        //	stmt.setString(4,preciounitario1);
-	        //	stmt.setString(5,"1");
-	        //	stmt.setString(6,"1");
-	        //	stmt.setString(7,"1");
-	        //	stmt.setInt(8,prod);
-	        	
+				stmt = conexion.prepareStatement("UPDATE productos SET"
+						+ " Nombre = ?,"
+						+ " Descripcion =?,"
+						+ " Cantidad = ?,"
+						+ " PrecioUnitario = ?"
+						+ " WHERE idProductos = ?;");
+	        	stmt.setString(1,nombre1);
+	        	stmt.setString(2,descripcion1);
+	        	stmt.setInt(3,cantidad1);
+	        	stmt.setDouble(4,preciounitario1);
+	        	stmt.setInt(5,idproducto1);
+				
+			
 	        	int response = stmt.executeUpdate();
 	        	if(response>0) 
 	        	{
@@ -416,20 +403,7 @@ try {
         e.printStackTrace();
     }
 
-
-
-
-
-
-		
-		
-		
-		
-		
-		
 	}
 	
 	
-	
-
 }
