@@ -9,15 +9,22 @@ importar  Java . Útil _ escaner ;
 
 
 public class Categorias {
+       
+        //Atributos
+     
 	private String Nombre;
 	private String Descripcion;
+
+        //-------------------------Constructores--------------
+       
+        public Categorias () {}
 
 	public Categorias(String nombre, String descripcion) {
 		this.nombre = Nombre;
 		this.descripcion = Descripcion;
 	}
    
-   // GETTERS Y SETTERS
+       // GETTERS Y SETTERS
 
 	public String getNombre() {
 		return Nombre;
@@ -35,7 +42,7 @@ public class Categorias {
 		this.descripcion = Descripcion;
 	}
     
-    //----------------------METODOS------------------------- -----------------
+        //----------------------METODOS------------------------- -----------------
     
 	public void crearCategoria(Connection conexion) 
 	{
