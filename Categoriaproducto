@@ -1,11 +1,11 @@
 package categoriaproductos;
 
-importar  Java . sql . conexion ;
-importar  Java . sql . Declaracion Preparada ;
+importar  Java . sql . conexión ;
+importar  Java . sql . DeclaraciÓn Preparada ;
 importar  Java . sql . conjunto de resultados ;
-importar  Java . sql . excepcion SQL ;
-importar  Java . sql . declaracion ;
-importar  Java . util _ escaner ;
+importar  Java . sql . excepción SQL ;
+importar  Java . sql . declaración ;
+importar  Java . Útil _ escaner ;
 
 
 public class Categorias {
