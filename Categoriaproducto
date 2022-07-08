@@ -39,8 +39,7 @@ public class Categorias {
     
 	public void crearCategoria(Connection conexion) 
 	{
-	    Escaner sc =nuevo Escaner(Sistema.en );
-		Sentencia Preparada  stmt = null ;
+	        Escaner sc =nuevo Escaner(Sistema.en);
 		System.out.println("Nombre de Categoria :");
 		String categoria = sc.nextLine(); 
 		System.out.println("Descripcion :");
