@@ -13,7 +13,7 @@ public class conexion {
 	private String USER;
 	private String PASS;
 	private String baseDato;
-	Connection connection;
+	static Connection connection;
 	
 	public conexion(String USER, String PASS, String Supermark) {
 		this.USER = "super";
@@ -28,10 +28,10 @@ public class conexion {
 		
 		try {
             Class.forName(JDBC_DRIVER);
-            this.connection = DriverManager.getConnection(this.DB_URL,this.USER,this.PASS);
-            if(this.connection != null) 
+            conexion.connection = DriverManager.getConnection(this.DB_URL,this.USER,this.PASS);
+            if(conexion.connection != null) 
             {
-            	respuesta = "Conectado";
+            	respuesta = "Conectado a la base de datos:" + baseDato;
             }
             else 
             {
@@ -56,11 +56,11 @@ public class conexion {
 		return respuesta;
 	}
 	
-	public Connection getConnection(){
-		return this.connection;
+	public static Connection getConnection(){
+		return connection;
 	}
 	
 	public void desconectar(){
-		this.connection = null;
+		conexion.connection = null;
 	}
 }
