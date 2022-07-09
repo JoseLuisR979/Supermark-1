@@ -178,7 +178,7 @@ public class Productos {
 				if (response > 0) 
 				{
 					System.out.println("Se dio de alta el producto correctamente!!");
-					sc.close();
+					
 				}
 			}catch (SQLException sqle){
 	            System.out.println("SQLState: "+ sqle.getSQLState());
@@ -251,7 +251,7 @@ public class Productos {
         	if(response>0) 
         	{
         		System.out.println("Se elimino producto " + idproductos1 + " correctamente");
-        		sc.close();
+        		
         	}	
 		}
 	
@@ -389,7 +389,7 @@ try {
 	        	if(response>0) 
 	        	{
 	        		System.out.println("se actualizo producto correctamente");
-	        		sc.close();
+	        		
 	        	}	
 			}
 		

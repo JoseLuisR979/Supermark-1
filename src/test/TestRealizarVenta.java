@@ -1,7 +1,6 @@
 package test;
 
-import ventas.ventas;
-import productos.Productos;
+import ventas.Ventas;
 import utilidades.conexion;
 
 
@@ -15,7 +14,7 @@ public class TestRealizarVenta {
 		
 		
 		
-		ventas ventas = new ventas();
+		Ventas ventas = new Ventas();
 		ventas.crearVentas(conexion.getConnection());
 		
 		
