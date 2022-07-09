@@ -11,7 +11,7 @@ import java.util.Calendar;
 import java.util.Scanner;
 
 
-public class ventas 
+public class Ventas 
 {
 	
 	//Atributos
@@ -27,12 +27,12 @@ public class ventas
 	
 	
 
-	public ventas() {	}
+	public Ventas() {	}
 
 	
 
 
-	public ventas(double montoDeCompra, int recibo, String observaciones, String fecha, double total,
+	public Ventas(double montoDeCompra, int recibo, String observaciones, String fecha, double total,
 			String observacion, boolean estado) {
 		super();
 		MontoDeCompra = montoDeCompra;
@@ -278,6 +278,7 @@ public class ventas
 				{
 					int producto = 0;
 					int stock = 0;
+					int idProductos1=0;
 					statement = conexion.createStatement();
 					sql = "SELECT idProductos,Cantidad FROM productos WHERE idProductos = "+listaProductos.get(i).getIdproducto();
 					rs = statement.executeQuery(sql);
@@ -285,13 +286,14 @@ public class ventas
 					{
 						producto= rs.getInt("idproductos");
 						stock = rs.getInt("Cantidad");
+						idProductos1 = rs.getInt("idProductos");
 					}
 					
 					stmt = conexion.prepareStatement("UPDATE productos SET Cantidad=?, detalleventas_ventas_idventas=? WHERE idProductos=?;");
 					int stockActual = stock - listaProductos.get(i).getCantidad();
 					stmt.setInt(1,stockActual);
 					stmt.setInt(2,producto);
-					stmt.setInt(3,idVentas + 1);
+					stmt.setInt(3,idProductos1);
 					response = stmt.executeUpdate(); 
 		        	if (response > 0)
 		                System.out.println("Stock actualizado");

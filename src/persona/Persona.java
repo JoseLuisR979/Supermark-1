@@ -137,7 +137,7 @@ public class Persona {
 			System.out.println("Ingrese un Password de 8 caracteres:");
 			String Pass = sc.nextLine();
 			
-			String Categoria="Cliente";
+			String Categoria="Empleado";
 			
 			Statement statement = null;
 			String sql;
@@ -172,7 +172,7 @@ public class Persona {
 					if (response > 0) 
 					{
 						System.out.println("Se dio de alta correctamente");
-						sc.close();
+						
 					}
 				}catch (SQLException sqle){
 		            System.out.println("SQLState: "+ sqle.getSQLState());
@@ -270,7 +270,7 @@ public class Persona {
 	        	if(response>0) 
 	        	{
 	        		System.out.println("se actualizo persona " + idpersona + " correctamente");
-	        		sc.close();
+	        		
 	        	}	
 			}
 		
@@ -363,7 +363,7 @@ public class Persona {
         		System.out.println("Se actualizo su password correctamente");
         		System.out.println("--------------------------------------");
         		System.out.println("\n\n");
-        		sc.close();
+        		
         		
         	}	
 		
@@ -375,7 +375,7 @@ public class Persona {
 				System.out.println("Su pasword no coincide consulte con el administrador");
 				System.out.println("----------------------------------------------------");
 				System.out.println("\n\n");
-				sc.close();
+				
 				
 			}
 		
@@ -450,7 +450,7 @@ public class Persona {
 	        	if(response>0) 
 	        	{
 	        		System.out.println("Se elimino el registro " + idpersona+ " correctamente");
-	        		sc.close();
+	        		
 	        	}	
 			}
 		
